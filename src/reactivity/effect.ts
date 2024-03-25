@@ -5,11 +5,11 @@ class RecvtiveEffect { //创建effect类
     }
     run() {           //动态更新时借助这个方法调用函数
         activeEffect = this;//
-        this._fn();
+        return this._fn();
     }
 }
 
-let activeEffect;    
+let activeEffect;
 const targetMap = new Map();
 
 export function track(target, key) {
@@ -38,4 +38,5 @@ export function effect(fn) {
     //fn
     const _effect = new RecvtiveEffect(fn);
     _effect.run();
+    return _effect.run.bind(_effect);
 }
