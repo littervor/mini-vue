@@ -6,7 +6,7 @@ describe('effect', () => {
         const user = reactive({
             age: 10
         })
-        let nextAge;
+        let nextAge=0;
         effect(() => {
             nextAge = user.age + 1
             console.log(nextAge);
